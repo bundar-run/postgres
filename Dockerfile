@@ -1,8 +1,8 @@
-FROM postgres:17
-
+ARG POSTGRES_VERSION=17
 ARG WALG_VERSION=3.0.3
 ARG TARGETARCH
 
+FROM postgres:${POSTGRES_VERSION}
 RUN apt-get update \
     && apt-get install -y curl \
     && BINARY_ARCH=$(if [ "$TARGETARCH" = "arm64" ]; then echo "aarch64"; else echo "amd64"; fi) \
